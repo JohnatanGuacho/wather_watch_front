@@ -1,0 +1,238 @@
+<!-- Hero Section -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="stars"></div>
+  <div class="nebula nebula-1"></div>
+  <div class="nebula nebula-2"></div>
+  
+  <div class="hero-content">
+    <div class="hero-badge">
+      <i class="pi pi-shield" aria-hidden="true"></i>
+      <span>Sistema de Monitoreo Avanzado</span>
+    </div>
+    
+    <h1 class="hero-title">
+      <span class="title-main">URBAN WATER</span>
+      <span class="title-accent">GUARD</span>
+    </h1>
+    
+    <p class="hero-subtitle">
+      Plataforma integral de monitoreo de resiliencia hídrica urbana
+      <br>
+      <span class="subtitle-accent">Datos satelitales • Análisis predictivo • Alertas inteligentes</span>
+    </p>
+    
+    <div class="hero-stats">
+      <div class="stat-item">
+        <span class="stat-number">24/7</span>
+        <span class="stat-label">Monitoreo</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">+50</span>
+        <span class="stat-label">Ciudades</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">Real-time</span>
+        <span class="stat-label">Datos</span>
+      </div>
+    </div>
+    
+    <div class="hero-actions">
+      <p-button 
+        label="Iniciar Monitoreo" 
+        icon="pi pi-play" 
+        routerLink="/map"
+        size="large"
+        class="cta-primary"
+        aria-label="Iniciar monitoreo en el mapa">
+      </p-button>
+      
+      <p-button 
+        label="Explorar Datos" 
+        icon="pi pi-chart-line" 
+        routerLink="/quality/placeholder"
+        severity="secondary"
+        size="large"
+        class="cta-secondary"
+        aria-label="Explorar datos históricos">
+      </p-button>
+    </div>
+  </div>
+</section>
+
+<!-- Features Section -->
+<section class="features">
+  <div class="container">
+    <div class="section-header">
+      <h2>Capacidades del Sistema</h2>
+      <p>Tecnología avanzada para el monitoreo integral de recursos hídricos urbanos</p>
+    </div>
+    
+    <div class="features-grid">
+      <p-card class="feature-card">
+        <div class="feature-content">
+          <div class="feature-icon drought">
+            <i class="pi pi-sun" aria-hidden="true"></i>
+          </div>
+          <h3>Detección de Sequía</h3>
+          <p>Análisis predictivo de condiciones de sequía basado en precipitación histórica y patrones climáticos</p>
+          <div class="feature-metrics">
+            <span class="metric">Precisión 94%</span>
+            <span class="metric">Alerta temprana</span>
+          </div>
+        </div>
+      </p-card>
+
+      <p-card class="feature-card">
+        <div class="feature-content">
+          <div class="feature-icon flood">
+            <i class="pi pi-cloud" aria-hidden="true"></i>
+          </div>
+          <h3>Monitoreo de Inundaciones</h3>
+          <p>Seguimiento en tiempo real de niveles de precipitación y riesgo de inundación urbana</p>
+          <div class="feature-metrics">
+            <span class="metric">Tiempo real</span>
+            <span class="metric">Cobertura 360°</span>
+          </div>
+        </div>
+      </p-card>
+
+      <p-card class="feature-card">
+        <div class="feature-content">
+          <div class="feature-icon quality">
+            <i class="pi pi-sparkles" aria-hidden="true"></i>
+          </div>
+          <h3>Calidad del Agua</h3>
+          <p>Medición satelital de parámetros de calidad: Clorofila-a, turbidez y contaminantes</p>
+          <div class="feature-metrics">
+            <span class="metric">Datos satelitales</span>
+            <span class="metric">Multi-espectral</span>
+          </div>
+        </div>
+      </p-card>
+    </div>
+  </div>
+</section>
+
+<!-- Quick Start Panel -->
+<section class="quick-start">
+  <div class="container">
+    <div class="quick-start-card">
+      <div class="quick-start-header">
+        <h3>Inicio Rápido</h3>
+        <p>Configure su monitoreo personalizado</p>
+      </div>
+      
+      <div class="quick-start-content">
+        <div class="input-section">
+          <label for="city-input" class="input-label">
+            <i class="pi pi-map-marker" aria-hidden="true"></i>
+            Ubicación
+          </label>
+          <div class="input-group">
+            <p-autoComplete
+              id="city-input"
+              [(ngModel)]="selectedCity"
+              [suggestions]="filteredCities"
+              (completeMethod)="filterCities($event)"
+              placeholder="Buscar ciudad o región..."
+              (onSelect)="onCitySelect()"
+              class="location-input"
+              aria-label="Buscar ciudad para monitoreo">
+            </p-autoComplete>
+            
+            <p-button 
+              icon="pi pi-compass" 
+              (onClick)="useLocation()"
+              severity="secondary"
+              class="location-btn"
+              pTooltip="Usar mi ubicación"
+              aria-label="Usar mi ubicación actual">
+            </p-button>
+          </div>
+        </div>
+
+        <div class="range-section">
+          <label class="input-label">
+            <i class="pi pi-calendar" aria-hidden="true"></i>
+            Período de análisis
+          </label>
+          <div class="range-options">
+            <div class="range-option">
+              <p-radioButton 
+                inputId="range7" 
+                name="range" 
+                value="7" 
+                [(ngModel)]="selectedRange">
+              </p-radioButton>
+              <label for="range7">7 días</label>
+            </div>
+            <div class="range-option">
+              <p-radioButton 
+                inputId="range14" 
+                name="range" 
+                value="14" 
+                [(ngModel)]="selectedRange">
+              </p-radioButton>
+              <label for="range14">14 días</label>
+            </div>
+            <div class="range-option">
+              <p-radioButton 
+                inputId="range30" 
+                name="range" 
+                value="30" 
+                [(ngModel)]="selectedRange">
+              </p-radioButton>
+              <label for="range30">30 días</label>
+            </div>
+          </div>
+        </div>
+
+        <p-button 
+          label="Iniciar Análisis" 
+          icon="pi pi-arrow-right" 
+          routerLink="/map"
+          size="large"
+          class="start-analysis-btn"
+          aria-label="Iniciar análisis de monitoreo">
+        </p-button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <h4>Urban Water Guard</h4>
+        <p>Tecnología satelital para la gestión inteligente del agua urbana</p>
+      </div>
+      
+      <div class="footer-links">
+        <div class="link-group">
+          <h5>Plataforma</h5>
+          <a routerLink="/map" aria-label="Acceder al mapa">Mapa Interactivo</a>
+          <a routerLink="/alerts" aria-label="Sistema de alertas">Alertas</a>
+          <a routerLink="/settings" aria-label="Configuración">Configuración</a>
+        </div>
+        
+        <div class="link-group">
+          <h5>Información</h5>
+          <a routerLink="/about" aria-label="Acerca de la aplicación">Acerca de</a>
+          <a routerLink="/privacy" aria-label="Política de privacidad">Privacidad</a>
+          <a routerLink="/terms" aria-label="Términos de uso">Términos</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2024 Urban Water Guard. Datos abiertos y satelitales.</p>
+      <div class="footer-badges">
+        <span class="badge">Datos NASA</span>
+        <span class="badge">Open Source</span>
+      </div>
+    </div>
+  </div>
+</footer>
